@@ -1,0 +1,7 @@
+{
+	"name": "Download FTP",
+	"properties": {
+		"description": "Baixar dados do FTP",
+		"annotations": []
+	}
+}
