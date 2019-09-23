@@ -252,7 +252,7 @@
 											"mappings": [
 												{
 													"source": {
-														"path": "$['value'][0]['dataHoraCotacao']"
+														"path": "[['dataHoraCotacao']"
 													},
 													"sink": {
 														"name": "dataHoraCotacao",
@@ -261,7 +261,7 @@
 												},
 												{
 													"source": {
-														"path": "$['value'][0]['cotacaoCompra']"
+														"path": "[['cotacaoCompra']"
 													},
 													"sink": {
 														"name": "cotacaoCompra",
@@ -270,7 +270,7 @@
 												},
 												{
 													"source": {
-														"path": "$['value'][0]['cotacaoVenda']"
+														"path": "[['cotacaoVenda']"
 													},
 													"sink": {
 														"name": "cotacaoVenda",
@@ -278,7 +278,7 @@
 													}
 												}
 											],
-											"collectionReference": ""
+											"collectionReference": "$['value']"
 										}
 									},
 									"inputs": [
