@@ -88,7 +88,8 @@
 				},
 				"parameters": {
 					"year": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "2019"
 					}
 				},
 				"annotations": [],
@@ -102,7 +103,31 @@
 						}
 					}
 				},
-				"schema": {}
+				"schema": {
+					"type": "object",
+					"properties": {
+						"@odata.context": {
+							"type": "string"
+						},
+						"value": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"cotacaoCompra": {
+										"type": "number"
+									},
+									"cotacaoVenda": {
+										"type": "number"
+									},
+									"dataHoraCotacao": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/http_bcb')]"
@@ -217,10 +242,43 @@
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
 												"quoteAllText": true,
-												"fileExtension": ".txt"
+												"fileExtension": ""
 											}
 										},
-										"enableStaging": false
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"mappings": [
+												{
+													"source": {
+														"path": "$['value'][0]['cotacaoCompra']"
+													},
+													"sink": {
+														"type": "Double",
+														"ordinal": 1
+													}
+												},
+												{
+													"source": {
+														"path": "$['value'][0]['cotacaoVenda']"
+													},
+													"sink": {
+														"type": "Double",
+														"ordinal": 2
+													}
+												},
+												{
+													"source": {
+														"path": "$['value'][0]['dataHoraCotacao']"
+													},
+													"sink": {
+														"type": "String",
+														"ordinal": 3
+													}
+												}
+											],
+											"collectionReference": ""
+										}
 									},
 									"inputs": [
 										{
