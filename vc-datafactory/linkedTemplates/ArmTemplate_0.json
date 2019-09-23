@@ -168,6 +168,7 @@
 					},
 					"columnDelimiter": ";",
 					"escapeChar": "\\",
+					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
 				"schema": []
@@ -251,11 +252,20 @@
 											"mappings": [
 												{
 													"source": {
+														"path": "$['value'][0]['dataHoraCotacao']"
+													},
+													"sink": {
+														"name": "dataHoraCotacao",
+														"type": "String"
+													}
+												},
+												{
+													"source": {
 														"path": "$['value'][0]['cotacaoCompra']"
 													},
 													"sink": {
-														"type": "Double",
-														"ordinal": 1
+														"name": "cotacaoCompra",
+														"type": "Double"
 													}
 												},
 												{
@@ -263,17 +273,8 @@
 														"path": "$['value'][0]['cotacaoVenda']"
 													},
 													"sink": {
-														"type": "Double",
-														"ordinal": 2
-													}
-												},
-												{
-													"source": {
-														"path": "$['value'][0]['dataHoraCotacao']"
-													},
-													"sink": {
-														"type": "String",
-														"ordinal": 3
+														"name": "cotacaoVenda",
+														"type": "Double"
 													}
 												}
 											],
