@@ -29,7 +29,7 @@
 				},
 				"fileSystem": "ingest"
 			},
-			"columnDelimiter": ";",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
