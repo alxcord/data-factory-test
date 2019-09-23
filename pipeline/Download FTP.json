@@ -71,20 +71,20 @@
 									"mappings": [
 										{
 											"source": {
-												"path": "$['value'][0]['cotacaoCompra']"
+												"path": "$['value'][0]['dataHoraCotacao']"
 											},
 											"sink": {
-												"type": "Double",
-												"ordinal": 1
+												"name": "dataHoraCotacao",
+												"type": "String"
 											}
 										},
 										{
 											"source": {
-												"path": "$['value'][0]['cotacaoVenda']"
+												"path": "$['value'][0]['cotacaoCompra']"
 											},
 											"sink": {
-												"type": "Double",
-												"ordinal": 2
+												"name": "cotacaoCompra",
+												"type": "Double"
 											}
 										},
 										{
@@ -92,8 +92,8 @@
 												"path": "$['value'][0]['dataHoraCotacao']"
 											},
 											"sink": {
-												"type": "String",
-												"ordinal": 3
+												"name": "cotacaoVenda",
+												"type": "Double"
 											}
 										}
 									],
