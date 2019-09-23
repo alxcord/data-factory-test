@@ -16,7 +16,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao ",
+					"value": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao",
 					"type": "Expression"
 				}
 			}
