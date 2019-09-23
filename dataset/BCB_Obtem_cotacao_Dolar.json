@@ -1,16 +1,24 @@
 {
-	"name": "Json1",
+	"name": "BCB_Obtem_cotacao_Dolar",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "http_bcb",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"year": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-2018'&@dataFinalCotacao='12-31-2018'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao"
+				"relativeUrl": {
+					"value": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao ",
+					"type": "Expression"
+				}
 			}
 		}
 	}

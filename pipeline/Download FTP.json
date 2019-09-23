@@ -27,7 +27,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Json1",
+						"referenceName": "BCB_Obtem_cotacao_Dolar",
 						"type": "DatasetReference"
 					}
 				]
