@@ -106,7 +106,7 @@
 				"schema": {
 					"type": "object",
 					"properties": {
-						"@odata.context": {
+						"odata.context": {
 							"type": "string"
 						},
 						"value": {
