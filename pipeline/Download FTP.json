@@ -89,7 +89,7 @@
 										},
 										{
 											"source": {
-												"path": "$['value'][0]['dataHoraCotacao']"
+												"path": "$['value'][0]['cotacaoVenda']"
 											},
 											"sink": {
 												"name": "cotacaoVenda",
