@@ -62,7 +62,7 @@
 									"formatSettings": {
 										"type": "DelimitedTextWriteSettings",
 										"quoteAllText": true,
-										"fileExtension": ".txt"
+										"fileExtension": ".csv"
 									}
 								},
 								"enableStaging": false,
@@ -71,18 +71,29 @@
 									"mappings": [
 										{
 											"source": {
-												"path": "$['Column_1']"
+												"path": "$['value'][0]['cotacaoCompra']"
 											},
 											"sink": {
+												"type": "Double",
 												"ordinal": 1
 											}
 										},
 										{
 											"source": {
-												"path": "$['Column_2']"
+												"path": "$['value'][0]['cotacaoVenda']"
 											},
 											"sink": {
+												"type": "Double",
 												"ordinal": 2
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['dataHoraCotacao']"
+											},
+											"sink": {
+												"type": "String",
+												"ordinal": 3
 											}
 										}
 									],
