@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"year": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "2019"
 			}
 		},
 		"annotations": [],
