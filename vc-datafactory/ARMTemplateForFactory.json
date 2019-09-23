@@ -142,38 +142,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/httpBCBDolar2018')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Cotação do dolar de 2018",
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('httpBCBDolar2018_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/http_bcb')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Obtendo dados do BCB",
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('http_bcb_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/BCB_Obtem_cotacao_Dolar')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -193,7 +161,7 @@
 					"location": {
 						"type": "HttpServerLocation",
 						"relativeUrl": {
-							"value": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao ",
+							"value": "olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao",
 							"type": "Expression"
 						}
 					}
@@ -203,23 +171,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/http_bcb')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/vcdatalake_g2')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('vcdatalake_g2_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('vcdatalake_g2_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/vcdatalake_ingest_csv')]",
@@ -263,6 +214,55 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/vcdatalake_g2')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/httpBCBDolar2018')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Cotação do dolar de 2018",
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('httpBCBDolar2018_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/http_bcb')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Obtendo dados do BCB",
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('http_bcb_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/vcdatalake_g2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('vcdatalake_g2_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('vcdatalake_g2_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
