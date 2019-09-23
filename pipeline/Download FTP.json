@@ -65,7 +65,29 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['Column_1']"
+											},
+											"sink": {
+												"ordinal": 1
+											}
+										},
+										{
+											"source": {
+												"path": "$['Column_2']"
+											},
+											"sink": {
+												"ordinal": 2
+											}
+										}
+									],
+									"collectionReference": ""
+								}
 							},
 							"inputs": [
 								{
