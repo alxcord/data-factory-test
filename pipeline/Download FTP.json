@@ -66,13 +66,22 @@
 							"inputs": [
 								{
 									"referenceName": "BCB_Obtem_cotacao_Dolar",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"year": {
+											"value": "@string(item())",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "BCB_Obtem_cotacao_Dolar",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"year": "@string(item())"
+									}
 								}
 							]
 						}
