@@ -175,6 +175,62 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/BCB_Obtem_cotacao_Dolar')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "http_bcb",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"year": {
+						"type": "string",
+						"defaultValue": "2019"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao",
+							"type": "Expression"
+						}
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"odata.context": {
+							"type": "string"
+						},
+						"value": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"cotacaoCompra": {
+										"type": "double"
+									},
+									"cotacaoVenda": {
+										"type": "double"
+									},
+									"dataHoraCotacao": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/http_bcb')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/vcdatalake_ingest_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -207,7 +263,7 @@
 						},
 						"fileSystem": "ingest"
 					},
-					"columnDelimiter": ";",
+					"columnDelimiter": ",",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
@@ -266,62 +322,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BCB_Obtem_cotacao_Dolar')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "http_bcb",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"year": {
-						"type": "string",
-						"defaultValue": "2019"
-					}
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": {
-							"value": "olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='01-01-@{dataset().year}'&@dataFinalCotacao='12-31-@{dataset().year}'&$top=10000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao",
-							"type": "Expression"
-						}
-					}
-				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"odata.context": {
-							"type": "string"
-						},
-						"value": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"cotacaoCompra": {
-										"type": "double"
-									},
-									"cotacaoVenda": {
-										"type": "double"
-									},
-									"dataHoraCotacao": {
-										"type": "string"
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/http_bcb')]"
-			]
 		}
 	]
 }
