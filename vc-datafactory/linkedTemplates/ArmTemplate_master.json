@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory Name",
+			"defaultValue": "vc-datafactory"
+		},
+		"vcdatalake_g2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'vcdatalake_g2'"
+		},
+		"httpBCBDolar2018_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": " https://olinda.bcb.gov.br"
+		},
+		"http_bcb_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": " https://olinda.bcb.gov.br/"
+		},
+		"vcdatalake_g2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://vcdatalake.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas Token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"vcdatalake_g2_accountKey": {
+						"value": "[parameters('vcdatalake_g2_accountKey')]"
+					},
+					"httpBCBDolar2018_properties_typeProperties_url": {
+						"value": "[parameters('httpBCBDolar2018_properties_typeProperties_url')]"
+					},
+					"http_bcb_properties_typeProperties_url": {
+						"value": "[parameters('http_bcb_properties_typeProperties_url')]"
+					},
+					"vcdatalake_g2_properties_typeProperties_url": {
+						"value": "[parameters('vcdatalake_g2_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "vc-datafactory"
+		},
+		"vcdatalake_g2_accountKey": {
+			"value": ""
+		},
+		"httpBCBDolar2018_properties_typeProperties_url": {
+			"value": " https://olinda.bcb.gov.br"
+		},
+		"http_bcb_properties_typeProperties_url": {
+			"value": " https://olinda.bcb.gov.br/"
+		},
+		"vcdatalake_g2_properties_typeProperties_url": {
+			"value": "https://vcdatalake.dfs.core.windows.net"
+		}
+	}
+}
