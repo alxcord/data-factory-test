@@ -1,0 +1,23 @@
+{
+	"name": "Five9Rest",
+	"properties": {
+		"description": "API para o Five9",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://api.five9.com/wsadmin/v11/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "apireports@vcimentos",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault_2",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "Five9apireports",
+				"secretVersion": ""
+			}
+		}
+	}
+}
