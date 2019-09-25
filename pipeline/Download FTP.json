@@ -135,6 +135,9 @@
 				"type": "Array"
 			}
 		},
+		"folder": {
+			"name": "Ingest/dados abertos"
+		},
 		"annotations": []
 	}
 }
