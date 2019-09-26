@@ -1,0 +1,7 @@
+{
+	"name": "integrationRuntimeTesteAlex",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "teste"
+	}
+}
