@@ -15,10 +15,47 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"method": "POST"
+					"url": {
+						"value": "@https://api.five9.com/wsadmin/AdminWebService?wsdl&user=@{variables('User')}",
+						"type": "Expression"
+					},
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					}
+				}
+			},
+			{
+				"name": "Set Variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Password",
+					"value": ""
 				}
 			}
 		],
+		"variables": {
+			"folderName": {
+				"type": "String"
+			},
+			"reportName": {
+				"type": "String"
+			},
+			"DateFrom": {
+				"type": "String"
+			},
+			"DateTo": {
+				"type": "String"
+			},
+			"User": {
+				"type": "String"
+			},
+			"Password": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
